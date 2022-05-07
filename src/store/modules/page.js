@@ -24,10 +24,10 @@ export default {
 
             about : {
                 path: `/about`,
-                name: `about`,
+                name: `count`,
                 meta: {
-                    title: `About`,
-                    icon: `question_mark`
+                    title: `count`,
+                    icon: `edit`
                 },
                 component : AboutView
             }
