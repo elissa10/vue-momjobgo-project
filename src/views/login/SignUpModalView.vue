@@ -55,8 +55,15 @@
         }),
 
         methods: {
-            submit() {
+            async submit() {
                 // 회원가입을 구현하세요.
+                 const response = await this.$api('https://api.devcury.kr/auth/user/new', {
+                   ...this.user
+                });
+                console.log(response.status)
+                if(response.status === 201){
+                    alert('회원가입 성공');
+                }                
             }
         },
 

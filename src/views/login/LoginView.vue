@@ -55,9 +55,20 @@
 
         methods : {
             ...mapActions('page', ['setAllVisible']),
+            ...mapActions('user', ['setToken', 'setName', 'setId']),
 
-            login() {
+            async login() {
                 // 로그인을 구현하세요.
+                const response = await this.$api('/auth/user/', 'post', {
+                    id: this.id,
+                    pwd: this.password,
+                });
+                
+                if(response.status == this.HTT_OK){
+                    const token = response.date.token;
+                    this.setToken(token);
+                    location.href = '/';
+                }
             }
         },
 
