@@ -23,6 +23,7 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex';
 
 export default {
 
@@ -44,9 +45,20 @@ export default {
     },
 
     methods: {
+        
+        ...mapActions('user', ['setName', 'setId', 'setToken']),
 
         async refreshUser(){
             // 유저 정보를 호출하고 vuex의 유저정보를 같이 갱신해 준다.
+            const {data : user} = await this.$api('/api/aut/user', 'get')
+            this.setId(user.id);
+            this.setName(user.name);
+
+            this.user.id = user.id;
+            this.user.name = user.name;
+            this.user.pwd = '';
+            this.user.newPwd = '';
+            this.checkPwd = '';
         },
 
         async modify(){

@@ -2,6 +2,7 @@ import HomeView from '@/views/HomeView.vue'
 import LoginView from '@/views/login/LoginView.vue'
 import UserView from '@/views/UserView.vue'
 import AxiosView from '@/views/AxiosView.vue'
+import CountView from '@/views/CountView.vue'
 
 export default {
 
@@ -23,6 +24,17 @@ export default {
                     display : true
                 },
                 component : HomeView
+            },
+
+            count : {
+                path: '/count',
+                name: 'count',
+                meta: {
+                    title: 'count',
+                    icon: 'edit',
+                    dipaly : true
+                },
+                component : CountView
             },
 
             user : {
