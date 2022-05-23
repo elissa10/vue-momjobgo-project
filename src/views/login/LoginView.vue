@@ -35,7 +35,7 @@
 
 <script>
     import SignUpModalViewVue from "./SignUpModalView.vue";
-
+    import axios from "axios"
     import { mapActions } from "vuex"
 
     export default {
@@ -59,16 +59,26 @@
 
             async login() {
                 // 로그인을 구현하세요.
-                const response = await this.$api('/auth/user/', 'post', {
+                 try {
+                    const response = await axios.post('https://api.devcury.kr/auth/user', {
+                        id : this.id,
+                        pwd : this.password
+                    });
+                    this.setToken(response.data.token);
+                    alert('토큰 발급 성공');    
+                } catch (error) {
+                    console.error(error);
+                }
+                /*const response = await this.$api('/auth/user/', 'post', {
                     id: this.id,
                     pwd: this.password,
                 });
                 
-                if(response.status == this.HTT_OK){
-                    const token = response.date.token;
+                if(response?.status === this.HTT_OK){
+                    const token = response.data.token;
                     this.setToken(token);
                     location.href = '/';
-                }
+                }*/
             }
         },
 
