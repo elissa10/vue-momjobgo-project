@@ -1,6 +1,7 @@
 import HomeView from '@/views/HomeView.vue'
 import LoginView from '@/views/login/LoginView.vue'
 import UserView from '@/views/UserView.vue'
+import AxiosView from '@/views/AxiosView.vue'
 
 export default {
 
@@ -33,6 +34,17 @@ export default {
                     display : true
                 },
                 component : UserView
+            },
+
+            axios : {
+                path: '/axios',
+                name: 'axios',
+                meta: {
+                    title:'axios',
+                    icon: 'search',
+                    display : true
+                },
+                component : AxiosView
             },
 
             login : {
